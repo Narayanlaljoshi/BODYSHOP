@@ -1,0 +1,682 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+		<title> Dashboard - BODYSHOP </title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+			
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Basic Styles -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+
+		<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
+        <link href="css/tableStyle.css" rel="stylesheet" />
+		<!-- SmartAdmin RTL Support  -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css">
+        
+		<!-- We recommend you use "your_style.css" to override SmartAdmin
+		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
+
+		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
+        <link href="css/progress-wizard.min.css" rel="stylesheet" />
+        <link href="css/DatePickerTest.css" rel="stylesheet" />
+        <link href="css/angular-datepicker.css" rel="stylesheet" />
+        <!--sweet alert-->
+
+        <script src="js/sweetAlert/sweetalert-dev.js"></script>
+        <link href="js/sweetAlert/sweetalert.css" rel="stylesheet" />
+
+
+
+
+		<!-- FAVICONS -->
+		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+
+		<!-- GOOGLE FONT -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+		<!-- Specifying a Webpage Icon for Web Clip 
+			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+		<link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="img/splash/touch-icon-ipad-retina.png">
+		
+		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!-- Startup image for web apps -->
+		<link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+		<link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+		<link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+	</head>
+<style>
+    #ribbon{
+    top: 70px !important; }
+    #main {
+        margin-top: 25px !important;
+    }
+    .small-box {
+        border-radius: 2px;
+        position: relative;
+        display: block;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    }
+.small-box:hover .icon {
+    font-size: 95px;
+}
+.small-box>.inner {
+    padding: 10px;
+}
+.small-box .icon {
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    z-index: 0;
+    font-size: 90px;
+    color: rgba(0,0,0,0.15);
+}
+.small-box>.small-box-footer {
+    position: relative;
+    text-align: center;
+    padding: 3px 0;
+    color: #fff;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0,0,0,0.1);
+    text-decoration: none;
+}
+.small-box h3, .small-box p {
+    z-index: 5;
+	color:#fff;
+}
+
+.small-box h3 {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+}
+.small-box p {
+    font-size: 15px;
+}
+.small-box.bg-primary
+{
+background-color:#00c0ef !important
+}
+.small-box.bg-success
+{
+background-color:#00a65a !important
+}
+.small-box.bg-warning
+{
+background-color:#f39c12 !important
+}
+.small-box.bg-danger
+{
+background-color:#dd4b39 !important
+}
+
+@media(max-width:980px){
+    div,header {
+        display: none !important;
+    }
+    body{
+        background:#000;
+        height:100vh;
+    }
+    .rotate-img{
+        display:block !important;
+    }
+}
+	</style>	
+
+
+<style>
+    .dashboard-boxes-set {
+        position: relative;
+        display: block;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        color: #fff;
+    }
+
+        .dashboard-boxes-set > .inner {
+            padding: 10px;
+        }
+
+        .dashboard-boxes-set h3 {
+            font-size: 38px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            white-space: nowrap;
+            padding: 0;
+        }
+
+        .dashboard-boxes-set p {
+            font-size: 15px;
+        }
+
+        .dashboard-boxes-set > .icon {
+            position: absolute;
+            top: auto;
+            bottom: 5px;
+            right: 15px;
+            z-index: 0;
+            font-size: 90px;
+            color: rgba(0, 0, 0, 0.15);
+            transition: all ease .5s;
+        }
+
+        .dashboard-boxes-set:hover .icon {
+            transform: scale(1.1);
+            transition: all ease .5s;
+            transform-origin: right;
+        }
+
+        .dashboard-boxes-set > .box-footer {
+            position: relative;
+            text-align: center;
+            padding: 3px 0;
+            color: #fff;
+            color: rgba(255, 255, 255, 0.8);
+            display: block;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+
+
+    .bg-aqua {
+        background-color: #00c0ef !important;
+    }
+
+    .bg-green {
+        background-color: #00a65a !important;
+    }
+
+    .bg-blue {
+        background-color: #0073b7 !important;
+    }
+
+    .bg-yellow {
+        background-color: #f39c12 !important;
+    }
+
+</style>
+
+	<!--
+
+	TABLE OF CONTENTS.
+	
+	Use search to find needed section.
+	
+	===================================================================
+	
+	|  01. #CSS Links                |  all CSS links and file paths  |
+	|  02. #FAVICONS                 |  Favicon links and file paths  |
+	|  03. #GOOGLE FONT              |  Google font link              |
+	|  04. #APP SCREEN / ICONS       |  app icons, screen backdrops   |
+	|  05. #BODY                     |  body tag                      |
+	|  06. #HEADER                   |  header tag                    |
+	|  07. #PROJECTS                 |  project lists                 |
+	|  08. #TOGGLE LAYOUT BUTTONS    |  layout buttons and actions    |
+	|  09. #MOBILE                   |  mobile view dropdown          |
+	|  10. #SEARCH                   |  search field                  |
+	|  11. #NAVIGATION               |  left panel & navigation       |
+	|  12. #RIGHT PANEL              |  right panel userlist          |
+	|  13. #MAIN PANEL               |  main panel                    |
+	|  14. #MAIN CONTENT             |  content holder                |
+	|  15. #PAGE FOOTER              |  page footer                   |
+	|  16. #SHORTCUT AREA            |  dropdown shortcuts area       |
+	|  17. #PLUGINS                  |  all scripts and plugins       |
+	
+	===================================================================
+	
+	-->
+	
+	<!-- #BODY -->
+	<!-- Possible Classes
+
+		* 'smart-style-{SKIN#}'
+		* 'smart-rtl'         - Switch theme mode to RTL
+		* 'menu-on-top'       - Switch to top navigation (no DOM change required)
+		* 'no-menu'			  - Hides the menu completely
+		* 'hidden-menu'       - Hides the main menu but still accessable by hovering over left edge
+		* 'fixed-header'      - Fixes the header
+		* 'fixed-navigation'  - Fixes the main menu
+		* 'fixed-ribbon'      - Fixes breadcrumb
+		* 'fixed-page-footer' - Fixes footer
+		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
+	-->
+
+
+
+<body style="    overflow: visible;" class="desktop-detected menu-on-top pace-done smart-style-0 fixed-header fixed-navigation fixed-ribbon" ng-app="homeApp" ng-controller="HomeController">
+    <img class="rotate-img" style="width:100%;display:none" src="img/rotate.jpg" />
+    <!-- HEADER -->
+    <header id="header" style="display:none">
+        <div id="logo-group">
+
+            <!-- PLACE YOUR LOGO HERE -->
+            <span id="logo" style="font-size:20px;font-weight:bold;"> BODYSHOP </span>
+            <!-- END LOGO PLACEHOLDER -->
+
+        </div>
+
+
+        <!-- pulled right: nav area -->
+        <div class="pull-right">
+
+            <!-- collapse menu button -->
+            <div id="hide-menu" class="btn-header pull-right">
+                <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+            </div>
+            <!-- end collapse menu -->
+            <!-- logout button -->
+            <div id="logout1" class="btn-header transparent pull-right">
+                <span> <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+            </div>
+            <!-- end logout button -->
+
+
+        </div>
+        <!-- end pulled right: nav area -->
+
+    </header>
+    <!-- END HEADER -->
+    <!--Test TFS-->
+    <!-- Left panel : Navigation area -->
+    <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+    <aside id="left-panel" style="    padding-top: 0;">
+
+        <!-- User info -->
+        <div class="login-info">
+            <span style="text-align:center;">
+                <!-- User image size is adjusted inside CSS, it should stay as it -->
+
+                <a>
+                    <!--<img src="img/avatars/1111.png" alt="me" class="online" />-->
+                    <span>
+                        {{session.UserName}}
+                    </span>
+
+                </a>
+
+            </span>
+        </div>
+        <!-- end user info -->
+        <div id="logo-group">
+
+            <!-- PLACE YOUR LOGO HERE -->
+            <span id="logo" style="font-size:20px;color: #fff;font-weight:bold;margin-top: 20px;"> BODYSHOP </span>
+            <!-- END LOGO PLACEHOLDER -->
+
+        </div>
+        <!-- NAVIGATION : This navigation is also responsive-->
+        <nav>
+            <!--
+            NOTE: Notice the gaps after each icon usage <i></i>..
+            Please note that these links work a bit different than
+            traditional href="" links. See documentation for details.
+            -->
+
+            <ul>
+
+                <li class="active">
+                    <a href="#/" title=""><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+                </li>
+
+                <li class="active">
+                    <a href="#/TestXls" title=""><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Test</span></a>
+                </li>
+                <li ng-show="session.DesignationID==1">
+                    <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Body Shop Tracking</span></a>
+                    <ul>
+                        <li>
+                            <a href="#/Excel">Upload Excel</a>
+                            <a href="#/Grid">Pending JobCards</a>
+                            <a href="#/Ready">Pending Delivery</a>
+
+                            <!--<a href="#/RequestView">RequestView</a>-->
+                            <!--</li>-->
+                            <!--<li ng-show="session.DesignationID==2">
+                    <a href="#/Excel">Upload Excel</a>
+                    <a href="#/Grid">Pending JobCards</a>
+                    <!--<a href="#/Ready">Pending Deliveries</a>-->
+                            <!--<a href="#/RequestView">RequestView</a>-->
+                        </li>
+                    </ul>
+                </li>
+
+                <li ng-show="session.DesignationID==2">
+                    <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Body Shop Tracking</span></a>
+                    <ul>
+
+                        <li>
+                            <a href="#/Excel">Upload Excel</a>
+                            <a href="#/Grid">Pending JobCards</a>
+                            <!--<a href="#/Ready">Pending Deliveries</a>-->
+                            <!--<a href="#/RequestView">RequestView</a>-->
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Search</span></a>
+                    <ul>
+
+                        <li>
+                            <a href="#/Jcd">Search Jobcard</a>
+
+                            <!--<a href="#/Ready">Pending Deliveries</a>-->
+                            <!--<a href="#/RequestView">RequestView</a>-->
+                        </li>
+                    </ul>
+                </li>
+                <li ng-show="session.DesignationID==1 || session.DesignationID==10002">
+                    <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Masters</span></a>
+                    <ul>
+                        <li>
+
+                            <!--<a href="#/Brand">Brand Master</a>-->
+                            <a href="#/Status">Status Master</a>
+                            <a href="#/Group">Group Master</a>
+                            <a href="#/Em">Email Master</a>
+                            <a href="#/Icm">Ins Cmp Master</a>
+                            <!--<a href="#/RequestView">RequestView</a>-->
+                        </li>
+                    </ul>
+                </li>
+                <li ng-show="session.DesignationID== 1|| session.DesignationID==10002">
+                    <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Reports</span></a>
+                    <ul>
+                        <li>
+
+                            <!--<a href="#/Report">Report</a>-->
+                            <a href="#/StatusWise">Status/ Date-Wise</a>
+                            <a href="#/Cwr">Group Wise</a>
+                            <a href="#/Mwr">Month Wise</a>
+                            <a href="#/Mfs">Month And Fuel Status</a>
+                            <!--<a href="#/RequestView">RequestView</a>-->
+                        </li>
+                    </ul>
+                </li>
+                <li class="hidden">
+                    <a href="c-handler.html" title=""><i class="fa fa-lg fa-fw fa-home"></i><span class="menu-item-parent">Complaint Handler</span></a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <span class="minifyme" data-action="minifyMenu">
+            <i class="fa fa-arrow-circle-left hit"></i>
+        </span>
+        <div id="logout1" class="btn-header transparent pull-right" style="margin: -40px 15px 0 0">
+            <span> <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+        </div>
+    </aside>
+    <!-- END NAVIGATION -->
+    <!-- MAIN PANEL -->
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <!--<span us-spinner="{radius:30, width:8, length: 16}"></span>-->
+            <div style="width: 100%; height: 100%; position: fixed; z-index: 11111; left: 0; top: 0;" us-spinner="{radius:30, width:8, length: 16}">
+
+                <div style="clear: both;" class="clear"></div>
+            </div>
+            <div class="content-wrapper" ng-view=ng-view scroll-content=scroll-content>
+
+            </div>
+
+        </div>
+    </div><!-- /.main-content -->
+    <!-- END MAIN PANEL -->
+    <!-- PAGE FOOTER -->
+    <div class="page-footer">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <span class="txt-color-white">BODYSHOP<span class="hidden-xs"> - Maruti </span> © 2017-2018</span>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 text-right hidden-xs">
+                <div class="txt-color-white inline-block">
+                    <i ng-if="session.AccountId==4" class="txt-color-blueLight hidden-mobile">Pasco- <i class="fa fa-clock-o"></i> <strong>Bodyshop &nbsp;</strong> </i>
+                    <i ng-if="session.AccountId==5" class="txt-color-blueLight hidden-mobile">Platinum- <i class="fa fa-clock-o"></i> <strong>Bodyshop &nbsp;</strong> </i>
+                    <div class="btn-group dropup">
+                        <button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
+                            <i class="fa fa-link"></i> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right text-left">
+                            <li>
+                                <div class="padding-5">
+                                    <p class="txt-color-darken font-sm no-margin">Download Progress</p>
+                                    <div class="progress progress-micro no-margin">
+                                        <div class="progress-bar progress-bar-success" style="width: 50%;"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="padding-5">
+                                    <p class="txt-color-darken font-sm no-margin">Server Load</p>
+                                    <div class="progress progress-micro no-margin">
+                                        <div class="progress-bar progress-bar-success" style="width: 20%;"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="padding-5">
+                                    <p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
+                                    <div class="progress progress-micro no-margin">
+                                        <div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="padding-5">
+                                    <button class="btn btn-block btn-default">refresh</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE FOOTER -->
+    <!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+    Note: These tiles are completely responsive,
+    you can add as many as you like
+    -->
+    <div id="shortcut">
+        <ul>
+            <li>
+                <a href="inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>Mail <span class="label pull-right bg-color-darken">14</span></span> </span> </a>
+            </li>
+            <li>
+                <a href="calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i class="fa fa-calendar fa-4x"></i> <span>Calendar</span> </span> </a>
+            </li>
+            <li>
+                <a href="gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i class="fa fa-map-marker fa-4x"></i> <span>Maps</span> </span> </a>
+            </li>
+            <li>
+                <a href="invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span> </a>
+            </li>
+            <li>
+                <a href="gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span> </a>
+            </li>
+            <li>
+                <a href="profile.html" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"> <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>My Profile </span> </span> </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="AppJS/Angular/angular.min.js"></script>
+    <script src="AppJS/Angular/angular-animate.min.js"></script>
+    <script src="AppJS/Angular/angular-route.min.js"></script>
+
+
+
+    <!--<script src="AppJS/Angular/ui-bootstrap-tpls-0.12.0.min.js"></script>-->
+
+    <script src="AppJS/Plugin/Select/angular-sanitize.js"></script>
+    <script src="AppJS/Plugin/Select/select.js"></script>
+    <script src="AppJS/Angular/sweetalert.min.js"></script>
+    <script src="AppJS/Angular/accept-number-only.js"></script>
+    <script src="AppJS/Angular/angular-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.core.min.js"></script>
+    <script src="Scripts/angular-js-xlsx.js"></script>
+    <script src="AppJS/Angular/loadash.min.js"></script>
+    <script src="AppJS/Angular/Angular-multiselect.js"></script>
+    <script src="AppJS/Angular/dirPagination.js"></script>
+
+    <script src="AppJS/js/script.js"></script>
+
+    <script src="AppJS/Angular/alasql.js"></script>
+    <script src="AppJS/Angular/ui-bootstrap-tpls-1.3.3.min.js"></script>
+    <script src="AppJS/Angular/spin.min.js"></script>
+    <script src="AppJS/Angular/angular-spinner.min.js"></script>
+
+    <script src="AppJS/Angular/angular-loading-spinner.js"></script>
+
+    <script src="AppJS/js/DashBoard/DashBoard.js"></script>
+    <script src="AppJS/js/GridView/GridView.js"></script>
+    <script src="AppJS/js/BodyShopPreview/BodyShopPreview.js"></script>
+    <script src="AppJS/js/BrandMaster/BrandMaster.js"></script>
+    <script src="AppJS/js/UploadExcel/UploadExcel.js"></script>
+    <script src="AppJS/js/StatusMaster/StatusMaster.js"></script>
+    <script src="AppJS/js/ContractorMaster/ContractorMaster.js"></script>
+    <script src="AppJS/js/ContractorWiseReport/ContractorWiseReport.js"></script>
+    <script src="AppJS/js/Report/Report.js"></script>
+    <script src="AppJS/js/ReadyJobCards/ReadyJobCards.js"></script>
+    <script src="AppJS/js/StatusWise/StatusWise.js"></script>
+    <script src="AppJS/js/MonthWiseReport/MonthWiseReport.js"></script>
+    <script src="AppJS/js/EmailMaster/EmailMaster.js"></script>
+    <script src="AppJS/js/DetailsForJobcard.js"></script>
+    <script src="AppJS/js/ModelAndFuelTypeStatus.js"></script>
+    <script src="AppJS/js/InsuranceCmpMaster/InsuranceCmpMaster.js"></script>
+    <script src="js/TestXlx.js"></script>
+    <!-- END SHORTCUT AREA -->
+    <!--================================================== -->
+    <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+    <script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
+
+    <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<script src="js/libs/jquery-2.1.1.min.js"><\/script>');
+        }
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script>
+        if (!window.jQuery.ui) {
+            document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+        }
+    </script>
+
+    <!-- IMPORTANT: APP CONFIG -->
+    <script src="js/app.config.js"></script>
+
+    <!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+    <script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <!--<script src="js/bootstrap/bootstrap.min.js"></script>-->
+    <script src="AppJS/Angular/bootstrap.min.js"></script>
+    <!-- CUSTOM NOTIFICATION -->
+    <script src="js/notification/SmartNotification.min.js"></script>
+
+    <!-- JARVIS WIDGETS -->
+    <script src="js/smartwidgets/jarvis.widget.min.js"></script>
+
+    <!-- EASY PIE CHARTS -->
+    <script src="js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+    <!-- SPARKLINES -->
+    <script src="js/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- JQUERY VALIDATE -->
+    <script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+    <!-- JQUERY MASKED INPUT -->
+    <script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+    <!-- JQUERY SELECT2 INPUT -->
+    <script src="js/plugin/select2/select2.min.js"></script>
+
+    <!-- JQUERY UI + Bootstrap Slider -->
+    <script src="js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+    <!-- browser msie issue fix -->
+    <script src="js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+    <!-- FastClick: For mobile devices -->
+    <script src="js/plugin/fastclick/fastclick.min.js"></script>
+
+    <!--[if IE 8]>
+
+    <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+    <![endif]-->
+    <!-- Demo purpose only
+    <script src="js/demo.min.js"></script>-->
+    <!-- MAIN APP JS FILE -->
+    <script src="js/app.min.js"></script>
+
+    <!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
+    <!-- Voice command : plugin -->
+    <script src="js/speech/voicecommand.min.js"></script>
+
+    <!-- SmartChat UI : plugin -->
+    <script src="js/smart-chat-ui/smart.chat.ui.min.js"></script>
+    <script src="js/smart-chat-ui/smart.chat.manager.min.js"></script>
+
+    <!-- PAGE RELATED PLUGIN(S) -->
+    <!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
+    <script src="js/plugin/flot/jquery.flot.cust.min.js"></script>
+    <script src="js/plugin/flot/jquery.flot.resize.min.js"></script>
+    <script src="js/plugin/flot/jquery.flot.time.min.js"></script>
+    <script src="js/plugin/flot/jquery.flot.tooltip.min.js"></script>
+
+    <!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
+    <script src="js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- Full Calendar -->
+    <script src="js/plugin/moment/moment.min.js"></script>
+    <script src="js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+
+
+
+</body>
+
+</html>

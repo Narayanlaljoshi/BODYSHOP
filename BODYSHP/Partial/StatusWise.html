@@ -1,0 +1,394 @@
+﻿<!-- MAIN PANEL -->
+<div id="main" role="main"style="margin-top:30px !important;">
+
+    <!-- RIBBON -->
+    <div id="ribbon"style="display:none;">
+
+        <span class="ribbon-button-alignment">
+            <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                <i class="fa fa-refresh"></i>
+            </span>
+        </span>
+
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li>Home</li>
+            <li>Report</li>
+        </ol>
+        <!-- end breadcrumb -->
+        <!-- You can also add more buttons to the
+        ribbon for further usability
+
+        Example below:
+
+        <span class="ribbon-button-alignment pull-right">
+        <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+        <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+        <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+        </span> -->
+
+    </div>
+    <!-- END RIBBON -->
+    <!-- MAIN CONTENT -->
+    <div id="content"style="padding:0px;">
+
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+
+            <!-- row -->
+
+            <div class="row">
+
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                    <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" role="widget" style="position: relative; opacity: 1; left: 0px; top: 0px;">
+
+                        <header role="heading">
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Report</h2>
+                            <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                        </header>
+
+                        <!-- widget div-->
+                        <div role="content">
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+
+                                <div class="smart-form">
+                                    <header>
+                                        Select Type
+                                    </header>
+
+                                    <fieldset>
+                                        <div class="row">
+                                            <section class="col col-3">
+                                                <label class="select">
+                                                    <select ng-model="SelectWise">
+                                                        <option>StatusWise</option>
+                                                        <option>DateWise</option>
+                                                        <option>GroupWise</option>
+                                                    </select>
+
+                                                </label>
+                                            </section>
+                                            <section class="col col-3">
+                                                <b>
+                                                    <input type="button" style="padding: 7px;" class="btn btn-success" ng-show="ngshow1" value="DownloadExcel"  ng-click="exportExcel()" />
+
+                                                </b>
+                                            </section>
+                                        </div>
+
+                                        <div ng-show="SelectWise=='DateWise'">
+                                            
+                                            <div class="row">
+                                                <section class="col col-3">
+                                                    <label class="label">Start Date :</label>
+                                                    <label class="input">
+                                                        <div class="datepicker"  id="Div2" date-format="dd MMM yyyy" date-min-limit="{{MaxDate.toString()}}" button-prev="<i class=&quot;fa fa-arrow-circle-left&quot;></i>" button-next="<i class=&quot;fa fa-arrow-circle-right&quot;></i>">
+                                                            <input class="form-control" placeholder="Current visit Date" ng-model="StartDate" type="text" name="CurrentDate"
+                                                                   ng-required="true" />
+
+                                                        </div>
+                                                    </label>
+                                                </section>
+
+                                                <section class="col col-3">
+                                                    <label class="label">End Date :</label>
+                                                    <label class="input">
+                                                        <div class="datepicker" id="Div2" date-format="dd MMM yyyy" date-min-limit="{{MaxDate.toString()}}" button-prev="<i class=&quot;fa fa-arrow-circle-left&quot;></i>" button-next="<i class=&quot;fa fa-arrow-circle-right&quot;></i>">
+                                                            <input class="form-control" placeholder="Current visit Date" ng-model="EndDate" type="text" name="CurrentDate" ng-required="true" />
+
+                                                        </div>
+                                                    </label>
+                                                </section>
+
+                                                <section class="col col-3">
+                                                    <label class="label">&nbsp;</label>
+                                                    <input type="button" style="padding: 5px;" class="btn btn-success btn-xs" value="GetData" ng-click="GetDateWiseDtl()" />
+                                                </section>
+                                            </div><!--./row-->
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <section class="col col-3" ng-show="SelectWise=='StatusWise'">
+                                                <label class="label">Select Status:</label>
+                                                <label>
+                                                    <select style="width:auto" class="form-control" value="sn.StatusID" ng-change="GetData()"
+                                                            ng-options="sn.StatusID as sn.StatusName for sn in StatusNames"
+                                                            ng-model="StatusID"></select>
+                                                </label>
+                                            </section>
+                                            <section class="col col-3" ng-show="SelectWise=='GroupWise'">
+                                                <label class="label">Select Group:</label>
+                                                <label>
+                                                    <select style="width:auto" class="form-control" value="sn.Contractor_Id" ng-change="GetContractorWiseDtl()"
+                                                            ng-options="sn.Contractor_Id as sn.ContractorName for sn in ContractorData"
+                                                            ng-model="Contractor_Id"></select>
+                                                </label>
+                                            </section>
+
+                                        </div>
+
+                                    </fieldset>
+
+
+                                    <div class="table-responsive" ng-show="ngshow1">
+
+                                        <br />
+                                        <dir-pagination-controls max-size="20"
+                                                                 direction-links="true"
+                                                                 boundary-links="true">
+                                        </dir-pagination-controls>
+                                        <table class="table table-bordered table-striped" style="font-size: 10px;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Job Card #</th>
+                                                    <th>Date</th>
+                                                    <th>Customer Name</th>
+                                                    <th>Phone No</th>
+                                                    <th>Model</th>
+                                                    <th>SA</th>
+                                                    <th>Reg.No</th>
+                                                    <!--<th>PromisedDate</th>-->
+                                                    <th>Panel Repair</th>
+                                                    <th>Panel Replaced</th>
+                                                    <th>No of Glass</th>
+                                                    <th>Group</th>
+                                                    <th>Payment Mode</th>
+                                                    <th>Ins Company</th>
+                                                    
+                                                    <th>Photo</th>
+                                                    <th>Last Updaed On</th>
+                                                    <th>Status</th>
+                                                    <!--<th>Action</th>-->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr dir-paginate="pc in PreviewData | filter :  Search | itemsPerPage:20" style="text-align:center;">
+                                                    <td><a style="cursor: pointer; text-decoration: underline;" ng-click="StatusPopup(pc.JobCardId)">{{pc.JobCardNo}}</a> </td>
+                                                    <td>{{pc.DateAndTime | date : 'dd MMM yyyy' }}</td>
+                                                    <td>{{pc.Model}}</td>
+                                                    <td>{{pc.CustomerName}}</td>
+                                                    <td>{{pc.PhoneNo}}</td>
+                                                    <td>{{pc.SA}}</td>
+
+                                                    <td>{{pc.RegistrationNo}}</td>
+                                                    <!--<td>{{pc.PromisedDate  | date : 'dd MMM yyyy'}}</td>-->
+                                                    <td>{{pc.No_Of_Panel}}</td>
+                                                    <td>{{pc.PanelReplaced}}</td>
+                                                    <td>{{pc.NoOfGlass}}</td>
+                                                    <td>{{pc.ContractorName}}</td>
+                                                    <td>{{pc.PaymentMode}}</td>
+                                                    <td>{{pc.CompanyName}}</td>
+                                                    
+                                                    <td>
+                                                        <a href="{{pc.PhotoUrl}}" target="_blank">
+                                                            <img ng-src="{{pc.PhotoUrl}}" style="height:50px;width:50px;" />
+                                                        </a>
+                                                    </td>
+                                                    <td>{{pc.ModifiedDate | date:'dd MMM yyyy' }}</td>
+                                                    <!--<td  ng-click="StatusPopup(pc.JobCardId)">{{pc.Status}}</td>-->
+                                                    <td align="center">
+                                                        {{pc.Status}}
+                                                        <!--<select class="form-control" value="sn.StatusID" ng-options="sn.StatusID as sn.StatusName for sn in StatusNames" ng-model="pc.StatusID"></select>-->
+                                                    </td>
+                                                    <!--<td>
+
+                        <input type="button" ng-style="pc.ModifiedDate_Formatted == CurrentDate && {'background-color':'#205EA0'}" class="btn btn-success" ng-click="UpdateData(pc.JobCardId,pc.StatusID,NumberOfPanel,PanelReplaced)" value="Update" />
+                    </td>-->
+                                                    <!--<td><a class="btn btn-primary btn-xs" href="group-ar-1.html">View</a></td>-->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <dir-pagination-controls max-size="20"
+                                                                 direction-links="true"
+                                                                 boundary-links="true">
+                                        </dir-pagination-controls>
+                                    </div>
+
+                                    <div class="table-responsive" ng-show="ngshow2">
+
+                                        <table class="table table-bordered table-striped">
+
+                                            <tbody>
+                                                <tr>
+                                                    <td>Registration No:</td>
+                                                    <td><input type="text" ng-model="RegistrationNo" required /></td>
+                                                    <td>Job Card No:</td>
+                                                    <td><input type="text" ng-model="JobCardNo" required /></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CustomerName:</td>
+                                                    <td><input type="text" ng-model="CustomerName" required /></td>
+                                                    <td>Phone/Mo:</td>
+                                                    <td><input type="tel" ng-model="PhoneNo" required /></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Customer Category:</td>
+                                                    <td><input type="text" ng-model="CustomerCategory" /></td>
+
+                                                    <td>PSF Status:</td>
+                                                    <td><input type="text" ng-model="PSFStatus" /></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Model:</td>
+                                                    <td><input type="text" ng-model="Model" /></td>
+
+                                                    <td>S.A.:</td>
+                                                    <td><input type="text" ng-model="SA" /></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Service:</td>
+                                                    <td><input type="text" ng-model="Service" /></td>
+
+                                                    <td>PromisedDate :</td>
+                                                    <td>
+                                                        <input type="date" ng-model="PromisedDate" />
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>No of Panel:</td>
+                                                    <td><input type="text" ng-model="NoOfPanel" /></td>
+
+                                                    <td>Panel Replaced:</td>
+                                                    <td><input type="text" ng-model="PanelReplaced" /></td>
+                                                </tr>
+
+                                                <tr>
+
+                                                    <td>Technician</td>
+                                                    <td>
+                                                        <input type="text" ng-model="Technician" />
+                                                    </td>
+
+                                                    <td>Status:</td>
+                                                    <td>
+                                                        <select name="state" class="form-control selectpicker" ng-model="Status"></select>
+                                                    </td>
+
+
+
+                                                </tr>
+
+
+
+                                            </tbody>
+                                        </table>
+
+                                        <input type="button" class="btn btn-success" ng-click="AddQuery()" value="Done !" />
+                                        <input type="button" class="btn btn-success" ng-click="AddRow(false)" value="Back" />
+                                    </div>
+
+                                </div>
+                                     
+                                       
+                                     <!--   <b style="padding: 15px;">
+                                            <input type="button" class="btn btn-success" ng-show="ngshow1" value="DownloadExcel" ng-click="exportExcel()" />
+                                            <button ng-show="ngshow1">DownloadExcel</button>
+                                        </b>-->
+                                     
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                </article>
+            </div>
+
+            <!-- end row -->
+
+        </section>
+        <!-- end widget grid -->
+
+    </div>
+    <!-- END MAIN CONTENT -->
+
+
+</div>
+<!-- END MAIN PANEL -->
+<script type="text/ng-template" id="Status.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Status report</h3>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Job Card No </th>
+                    <th>RegNo.</th>
+                    <th> Customer Name</th>
+                    <th>Current Status</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat=" item in jobCardDetails">
+                    <td>{{item.JobCardNo}}</td>
+                    <td>{{item.RegistrationNo}}</td>
+                    <td>{{item.CustomerName}}</td>
+                    <td>{{item.StatusName}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-header">
+        <h3 class="modal-title">Request Status Details : {{EmployeeDetails.RequestNumber}}</h3>
+    </div>
+    <br />
+    <div>
+
+        <ul class="progress-indicator" style="overflow-x:auto">
+            <li class="completed" ng-repeat="item in PopupData">
+                <span class="bubble"></span>
+                {{item.StatusCode}} <br>{{item.ModifiedDate | date:'dd-MMM'}}
+            </li>
+
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" type="button" ng-click="confirm()">
+            Ok
+        </button>
+    </div>
+</script>
+
+<!--<tr>
+                 <td width="35" height="30" bgcolor="#FDEDEC">Date</td>
+                 <td width="35" height="30" ng-repeat="pd in PopupData" bgcolor="#ABB2B9">{{pd.ModifiedDate | date : 'dd MMM'}}</td>
+             </tr>
+             <tr >
+                 <td bgcolor="#FDEDEC" width="35" height="30">Status</td>
+                 <td width="35" height="45" ng-style="pd.StatusID === 1 && {'background-color':'yellow'}
+                          || pd.StatusID === 2 && {'background-color':'green'}
+                          || pd.StatusID === 3 && {'background-color':'Gray'}
+                          || pd.StatusID === 5 && {'background-color':'#F1948A'}
+                          || pd.StatusID === 4 && {'background-color':'#AF7AC5'}
+                          || pd.StatusID === 6 && {'background-color':'#7FB3D5'}
+                          || pd.StatusID === 7 && {'background-color':'#48C9B0'}
+                          || pd.StatusID === 8 && {'background-color':'#F5B041'}
+                          || pd.StatusID === 9 && {'background-color':'#D35400'}
+                          || pd.StatusID === 10 && {'background-color':'#27AE60'}
+                          || pd.StatusID === 11 && {'background-color':'#CACFD2'}
+                          || pd.StatusID === 12 && {'background-color':'#E67E22'}"
+
+                  ng-repeat="pd in PopupData">{{pd.StatusCode}}</td>
+             </tr>-->

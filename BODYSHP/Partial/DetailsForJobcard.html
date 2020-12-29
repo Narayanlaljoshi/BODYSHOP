@@ -1,0 +1,161 @@
+﻿<!-- MAIN PANEL -->
+<div id="main" role="main" style="margin-top:30px !important;">
+
+    <!-- RIBBON -->
+    <div id="ribbon" style="display:none;">
+
+        <span class="ribbon-button-alignment">
+            <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                <i class="fa fa-refresh"></i>
+            </span>
+        </span>
+
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li>Home</li>
+            <li>Search Jobcard</li>
+        </ol>
+       
+    </div>
+    <!-- END RIBBON -->
+    <!-- MAIN CONTENT -->
+    <div id="content" style="padding:0px;">
+
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+
+            <!-- row -->
+
+            <div class="row">
+
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                    <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" role="widget" style="position: relative; opacity: 1; left: 0px; top: 0px;">
+
+                        <header role="heading">
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Search</h2>
+                            <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                        </header>
+
+                        <!-- widget div-->
+                        <div role="content">
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label>
+                                        Search:
+                                        <input type="text"placeholder="Jobcard no." ng-model="JobCardNumber" />
+                                    </label>
+                                </div>
+                                <div class="col-lg-4">
+                                   <button class="btn" ng-click="init()">Go</button>
+                                </div>
+                            </div>
+                            <br />
+                                <form ng-show="ShowDetails">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label><b>Job Card:&nbsp;</b> </label>{{JobcardDetail[0].JobCardNo}}
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label><b>Date:&nbsp;</b></label>{{JobcardDetail[0].DateAndTime|date:'dd-MMM-yy'}}
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label><b>Model:&nbsp;</b></label>{{JobcardDetail[0].Model}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label><b>Customer Name:&nbsp;</b></label>{{JobcardDetail[0].CustomerName}}
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label><b>Phone No:&nbsp;</b></label>{{JobcardDetail[0].PhoneNo}}
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label><b>SA:&nbsp;</b></label>{{JobcardDetail[0].SA}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label><b>Reg.No:&nbsp;</b></label>{{JobcardDetail[0].RegistrationNo}}
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label><b>PaymentMode:&nbsp;</b></label>{{JobcardDetail[0].PaymentMode}}
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row widget-body no-padding">
+                                        <div class="table-responsive">
+
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Panel Repair</th>
+                                                        <th>Panel Replaced</th>
+                                                        <th>Glass</th>
+                                                        <th>Status</th>
+                                                        <!--<th>Group</th>-->                                                        
+                                                        <th>Ins. Comp.</th>
+                                                        <th>Photo</th>
+                                                        <th>Last Updated</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody ng-repeat="pc in JobcardDetail">
+                                                    <tr style="text-align: center;">
+                                                        <td>{{pc.No_Of_Panel}}</td>
+                                                        <td>{{pc.PanelReplaced}}</td>
+                                                        <td>{{pc.NoOfGlass}}</td>
+                                                        <td>{{pc.StatusName}}</td>
+                                                        <td>{{pc.CompanyName}}</td>
+                                                        <td>
+                                                            <a ng-if="pc.PhotoUrl!=''" href="{{pc.PhotoUrl}}"target="_blank">
+                                                                <img style="height:50px;width:50px;" ng-src={{pc.PhotoUrl}}  />
+                                                            </a>
+                                                        </td>
+                                                        <td>{{pc.StatusAddedDate|date:'dd-MMM-yy'}}</td>
+                                                    </tr>
+
+
+                                                    <!--<td><a class="btn btn-primary btn-xs" href="group-ar-1.html">View</a></td>-->
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!--./end widget-->
+
+
+                                    </div>
+                                    <!-- end widget content -->
+                                    <br /><br />
+                                    <!--<h3>Complaint Type Information</h3>
+            <div class="widget-body no-padding">
+
+            </div>-->
+
+                                </form>
+                            </div>
+                        
+                    </div>
+                </article>
+            </div>
+
+            <!-- end row -->
+
+        </section>
+        <!-- end widget grid -->
+
+    </div>
+    <!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->

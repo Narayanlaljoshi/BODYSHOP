@@ -1,0 +1,177 @@
+﻿<!-- MAIN PANEL -->
+<div id="main" role="main"style="margin-top:30px !important;">
+
+    <!-- RIBBON -->
+    <div id="ribbon"style="display:none;">
+
+        <span class="ribbon-button-alignment">
+            <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                <i class="fa fa-refresh"></i>
+            </span>
+        </span>
+
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li>Home</li>
+            <li>Update Status</li>
+        </ol>
+        <!-- end breadcrumb -->
+        <!-- You can also add more buttons to the
+        ribbon for further usability
+
+        Example below:
+
+        <span class="ribbon-button-alignment pull-right">
+        <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+        <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+        <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+        </span> -->
+
+    </div>
+    <!-- END RIBBON -->
+    <!-- MAIN CONTENT -->
+    <div id="content"style="padding:0px;">
+
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+
+            <!-- row -->
+
+            <div class="row">
+
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                    <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" role="widget" style="position: relative; opacity: 1; left: 0px; top: 0px;">
+
+                        <header role="heading">
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>View</h2>
+                            <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                        </header>
+
+                        <!-- widget div-->
+                        <div role="content">
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+
+
+                            <div class="widget-body no-padding">
+                                <div class="table-responsive">
+
+                                    <table class="table table-bordered table-striped">
+                                        <!--<thead>
+                                            <tr>
+                                                
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>-->
+                                        <tbody ng-repeat="pc in RequestData">
+                                            <tr>
+                                                <td>Registration No</td>
+                                                <td>{{pc.RegistrationNo}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CustomerName</td>
+                                                <td>{{pc.CustomerName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Date and Time</td>
+
+                                                <td>{{pc.DateAndTime}}</td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>Status</td>
+                                                <td ng>{{pc.StatusName}}</td>
+                                            </tr>
+                                                
+                                                
+                                                <!--<td><a class="btn btn-primary btn-xs" href="group-ar-1.html">View</a></td>-->
+                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------->
+                                <form name="CustomerInformation" id="contact-form" class="smart-form" novalidate="novalidate">
+                                    <fieldset>
+                                        <div class="row">
+                                            <section class="col col-4">
+                                                <label class="label">Number of Panel</label>
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-ellipsis-v"></i>
+                                                    <input v="221B Baker Street" type="text" name="named" id="named" ng-model="NumberOfPanel">
+                                                </label>
+                                            </section>
+                                            <section class="col col-4">
+                                                <label class="label">Panel Replaced</label>
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-ellipsis-v"></i>
+                                                    <input v="221B Baker Street" type="text" name="named" id="named" ng-model="PanelReplaced">
+                                                </label>
+                                            </section>
+                                            <section class="col col-4">
+                                                <label class="label">Status</label>
+                                                <label class="input">
+
+                                                    <select name="state" class="form-control selectpicker" ng-options="st.StatusID as st.StatusName for st in StatusData" ng-model="UpdateStatus">
+                                                       <!--<option ng-repeat="sq in StatusData">{{sq.StatusName}}</option>-->
+
+                                                    </select>
+                                                </label>
+                                            </section>
+                                        </div>
+
+                                        <hr style="margin-bottom: 10px;">
+
+                                        <div class="row">
+                                            <section class="col col-4">
+                                                <label class="label">Remarks</label>
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-ellipsis-v"></i>
+                                                    <textarea rows="3" cols="45" ng-model="Remarks"></textarea>
+                                                </label>
+                                            </section>
+                                        </div>
+                                    </fieldset>
+
+
+                                </form>
+                                <!--./end widget-->
+
+                              
+                            </div>
+                            <!-- end widget content -->
+                            <br /><br />
+                            <!--<h3>Complaint Type Information</h3>
+                            <div class="widget-body no-padding">
+
+                            </div>-->
+                       
+                        </div>
+                        <!--<input type="button" value="ClickHere" ng-click="CompleteRequest(20018)" />-->
+                        <input type="button" class="btn btn-success" value="Back" ng-click="Back()" />
+                        <input type="button" class="btn btn-success" value="Update" ng-click="UpdateData()" />
+                    </div>
+                </article>
+            </div>
+
+            <!-- end row -->
+
+        </section>
+        <!-- end widget grid -->
+
+    </div>
+    <!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->

@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BODYSHP", "BODYSHP\BODYSHP.csproj", "{0A303A58-9B20-493F-807E-76DE0969798E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BODYSHPBLL", "BODYSHPBLL\BODYSHPBLL.csproj", "{9AB39E83-4D0F-42A0-9810-486C6CF0F697}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BODYSHPDAL", "BODYSHPDAL\BODYSHPDAL.csproj", "{2EF2F58A-62DD-4169-8CC5-9CC425DA6064}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A303A58-9B20-493F-807E-76DE0969798E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A303A58-9B20-493F-807E-76DE0969798E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A303A58-9B20-493F-807E-76DE0969798E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A303A58-9B20-493F-807E-76DE0969798E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AB39E83-4D0F-42A0-9810-486C6CF0F697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AB39E83-4D0F-42A0-9810-486C6CF0F697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AB39E83-4D0F-42A0-9810-486C6CF0F697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AB39E83-4D0F-42A0-9810-486C6CF0F697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EF2F58A-62DD-4169-8CC5-9CC425DA6064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF2F58A-62DD-4169-8CC5-9CC425DA6064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF2F58A-62DD-4169-8CC5-9CC425DA6064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF2F58A-62DD-4169-8CC5-9CC425DA6064}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://phoenixtech232.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BODYSHP\\BODYSHP.csproj
+		SccProjectName1 = BODYSHP
+		SccLocalPath1 = BODYSHP
+		SccProjectUniqueName2 = BODYSHPBLL\\BODYSHPBLL.csproj
+		SccProjectName2 = BODYSHPBLL
+		SccLocalPath2 = BODYSHPBLL
+		SccProjectUniqueName3 = BODYSHPDAL\\BODYSHPDAL.csproj
+		SccProjectName3 = BODYSHPDAL
+		SccLocalPath3 = BODYSHPDAL
+	EndGlobalSection
+EndGlobal

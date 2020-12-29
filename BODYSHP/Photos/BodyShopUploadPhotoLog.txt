@@ -1,0 +1,7 @@
+Local Path:-F:\Running Projects\BODYSHP_Sep08\BODYSHP\BODYSHP\BODYSHP\BODYSHP\Photos\
+PhotoUrlServer:-http://localhost:55529/Photos/
+fileName:-"SQL_Operator.jpg"
+fileNameSQL_Operator.jpg
+PhotoUrlServer :-http://localhost:55529/Photos/6364833248686133288.jpg
+location :-F:\Running Projects\BODYSHP_Sep08\BODYSHP\BODYSHP\BODYSHP\BODYSHP\Photos\6364833248686133288.jpg
+File Attached :-

@@ -1,0 +1,151 @@
+﻿<!-- MAIN PANEL -->
+<div id="main" role="main">
+
+    <!-- RIBBON -->
+    <div id="ribbon">
+
+        <span class="ribbon-button-alignment">
+            <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                <i class="fa fa-refresh"></i>
+            </span>
+        </span>
+
+        <!-- breadcrumb -->
+        <!--<ol class="breadcrumb">
+            <li>Home</li>
+            <li>Brand</li>
+        </ol>-->
+        <!-- end breadcrumb -->
+        <!-- You can also add more buttons to the
+        ribbon for further usability
+
+        Example below:
+
+        <span class="ribbon-button-alignment pull-right">
+        <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+        <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+        <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+        </span> -->
+
+    </div>
+    <!-- END RIBBON -->
+    <!-- MAIN CONTENT -->
+    <div id="content">
+
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+
+            <!-- row -->
+
+            <div class="row">
+
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                    <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" role="widget" style="position: relative; opacity: 1; left: 0px; top: 0px;">
+
+                        <header role="heading">
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Brand</h2>
+                            <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                        </header>
+
+                        <!-- widget div-->
+                        <div role="content">
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+                                <br />
+                                <input type="button" value="Add Brand" class="btn btn-success" ng-click="AddRow(true)" ng-show="ngshow1" />
+                                <b ng-show="ngshow1" >
+                                    Search :
+                                    <input type="text" ng-model="Search" />
+                                </b>
+                                <div class="table-responsive" ng-show="ngshow1">
+                                    <br />
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>SNO</th>
+                                                <th>Brand Name</th>
+                                                <th>Edit/update</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="pc in BrandData | filter :  Search ">
+                                                <td>{{$index +1}}</td>
+                                                <td>{{pc.BrandName}}</td>
+                                                
+                                                <td>
+                                                    <input type="button" class="btn btn-success" ng-click="Edit(pc.BrandId,pc.BrandName)" value="Edit" />
+                                                    <input type="button" class="btn btn-success" ng-click="Delete(pc.BrandId)" value="Delete" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="table-responsive" ng-show="ngshow2">
+
+                                    <table class="table table-bordered table-striped">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>Brand Name:</td>
+                                                <td><input type="text" ng-model="BrandName" required /></td>
+                                               
+                                            </tr>
+                                          
+                                        </tbody>
+                                    </table>
+
+                                    <input type="button" class="btn btn-success" ng-click="AddBrand()" value="Save" />
+                                    <input type="button" class="btn btn-success" ng-click="AddRow(false)" value="Back" />
+                                </div>
+
+                                <div class="table-responsive" ng-show="EditShow">
+
+                                    <table class="table table-bordered table-striped">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>Id</td>
+                                                <td><input type="text" ng-model="BrandId" readonly /></td>
+                                                <td>Brand Name:</td>
+                                                <td><input type="text" ng-model="BrandName"  required /></td>
+                                                
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                    <input type="button" class="btn btn-success" ng-click="Update(BrandId,BrandName)" value="Update" />
+                                    <input type="button" class="btn btn-success" ng-click="AddRow(false)" value="Back" />
+                                </div>
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                </article>
+            </div>
+
+            <!-- end row -->
+
+        </section>
+        <!-- end widget grid -->
+
+    </div>
+    <!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->

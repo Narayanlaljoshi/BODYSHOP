@@ -1,0 +1,122 @@
+﻿<!-- MAIN PANEL -->
+<div id="main" role="main"style="margin-top:30px !important;">
+
+    <!-- RIBBON -->
+    <div id="ribbon"style="display:none;">
+
+        <span class="ribbon-button-alignment">
+            <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                <i class="fa fa-refresh"></i>
+            </span>
+        </span>
+
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li>Home</li>
+            <li>Report</li>
+        </ol>
+        <!-- end breadcrumb -->
+        <!-- You can also add more buttons to the
+        ribbon for further usability
+
+        Example below:
+
+        <span class="ribbon-button-alignment pull-right">
+        <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+        <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+        <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+        </span> -->
+
+    </div>
+    <!-- END RIBBON -->
+    <!-- MAIN CONTENT -->
+    <div id="content"style="padding:0px;">
+
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+
+            <!-- row -->
+
+            <div class="row">
+
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                    <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" role="widget" style="position: relative; opacity: 1; left: 0px; top: 0px;">
+
+                        <header role="heading">
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Report</h2>
+                            <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                        </header>
+
+                        <!-- widget div-->
+                        <div role="content">
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+                                <br />
+                                <input type="button" value="Add Row" class="btn btn-success" ng-click="AddRow(true)" ng-show="ngshow1" />
+                                <b>
+                                    Search :
+                                    <input type="text" ng-model="Search" />
+                                </b>
+                                <div class="table-responsive" ng-show="ngshow1">
+                                    <br />
+                                    <table class="table table-bordered table-striped">
+                                        
+                                            <tbody class="alt-color">
+                                                <tr>
+                                                    <td width="35" height="30" bgcolor="#FDEDEC">Date</td>
+                                                    <td width="35" height="30" ng-repeat="pd in PopupData" bgcolor="#ABB2B9">{{pd.ModifiedDate | date : 'dd MMM'}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td bgcolor="#FDEDEC" width="35" height="30">Status</td>
+                                                    <td width="35" height="45" ng-style="pd.StatusID === 1 && {'background-color':'yellow'}
+                                                        || pd.StatusID === 2 && {'background-color':'green'}
+                                                        || pd.StatusID === 3 && {'background-color':'Gray'}
+                                                        || pd.StatusID === 5 && {'background-color':'#F1948A'}
+                                                        || pd.StatusID === 4 && {'background-color':'#AF7AC5'}
+                                                        || pd.StatusID === 6 && {'background-color':'#7FB3D5'}
+                                                        || pd.StatusID === 7 && {'background-color':'#48C9B0'}
+                                                        || pd.StatusID === 8 && {'background-color':'#F5B041'}
+                                                        || pd.StatusID === 9 && {'background-color':'#D35400'}
+                                                        || pd.StatusID === 10 && {'background-color':'#27AE60'}
+                                                        || pd.StatusID === 11 && {'background-color':'#CACFD2'}
+                                                        || pd.StatusID === 12 && {'background-color':'#E67E22'}"
+                                                                                   
+                                                        ng-repeat="pd in PopupData">{{pd.StatusCode}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+
+                               
+                            </div>
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                </article>
+            </div>
+
+            <!-- end row -->
+
+        </section>
+        <!-- end widget grid -->
+
+    </div>
+    <!-- END MAIN CONTENT -->
+
+
+</div>
+<!-- END MAIN PANEL -->

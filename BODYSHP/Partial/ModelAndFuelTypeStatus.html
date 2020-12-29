@@ -1,0 +1,135 @@
+﻿<!-- MAIN PANEL -->
+<div id="main" role="main" style="margin-top:30px !important;">
+
+    <!-- RIBBON -->
+    <div id="ribbon" style="display:none;">
+
+        <span class="ribbon-button-alignment">
+            <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                <i class="fa fa-refresh"></i>
+            </span>
+        </span>
+
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li>Home</li>
+            <li>Month and Fuel Type</li>
+        </ol>
+
+    </div>
+    <!-- END RIBBON -->
+    <!-- MAIN CONTENT -->
+    <div id="content" style="padding:0px;">
+
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+
+            <!-- row -->
+
+            <div class="row">
+
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                    <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" role="widget" style="position: relative; opacity: 1; left: 0px; top: 0px;">
+
+                        <header role="heading">
+                            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                            <h2>Month and Fuel Type</h2>
+                            <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                        </header>
+
+                        <!-- widget div-->
+                        <div role="content">
+
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <label>
+                                        Search:
+                                        <input type="text" class="form-control" ng-model="Search"/>
+                                    </label>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>
+                                        Month:
+                                        <select class="form-control" ng-model="Month" ng-options="pt.Month as pt.Name for pt in MonthList">
+                                            
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>
+                                        Year:
+                                        <select class="form-control" ng-model="Year" ng-options="pt.Year as pt.Year for pt in YearList"></select>
+                                    </label>
+                                </div>
+                                <div class="col-lg-4 pull-left">
+                                    <button style="margin-top:20px;" class="btn btn-primary btn-xs" ng-click="GetData()">Go</button>
+                                    <button style="margin-top:20px;" class="btn btn-info btn-xs" ng-click="init()">Reset</button>
+                                    <button style="margin-top:20px;"  ng-show="ShowDetails" class="btn btn-success btn-xs" ng-click="exportExcel()">Export</button>
+                                </div>
+                            </div>
+                            <br />
+                            <form ng-show="ShowDetails">
+                              
+                                <div class="row widget-body no-padding">
+                                    <div class="table-responsive">
+
+                                        <table id="MonthAndFuelTypeTable" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Model</th>
+                                                    <th>Grand Total</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-repeat="pc in ReportData | filter:Search">
+                                                <tr style="text-align: center;">
+                                                    <td>{{$index}}</td>
+                                                    <td>{{pc.Model}}</td>
+                                                    <td>{{pc.GrandTotal}}</td>                                                   
+                                                </tr>
+
+
+                                                <!--<td><a class="btn btn-primary btn-xs" href="group-ar-1.html">View</a></td>-->
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!--./end widget-->
+
+
+                                </div>
+                                <!-- end widget content -->
+                                <br /><br />
+                                <!--<h3>Complaint Type Information</h3>
+                                <div class="widget-body no-padding">
+
+                                </div>-->
+
+                            </form>
+                        </div>
+
+                    </div>
+                </article>
+            </div>
+
+            <!-- end row -->
+
+        </section>
+        <!-- end widget grid -->
+
+    </div>
+    <!-- END MAIN CONTENT -->
+
+</div>
+<!-- END MAIN PANEL -->
